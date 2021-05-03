@@ -8,19 +8,19 @@
 import UIKit
 
 enum URLExamples: String {
-    case imageURL = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
-    case exampleOne = "https://swiftbook.ru//wp-content/uploads/api/api_course"
-    case exampleTwo = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
-    case exampleThree = "https://swiftbook.ru//wp-content/uploads/api/api_website_description"
-    case exampleFour = "https://swiftbook.ru//wp-content/uploads/api/api_missing_or_wrong_fields"
+    case imageURLOne = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
+    case imageURLTwo = "https://images.wallpaperscraft.ru/image/doroga_povorot_derevia_205322_2160x3840.jpg"
+    case imageURLThree = "https://images.wallpaperscraft.ru/image/gory_holmy_derevia_205309_2160x3840.jpg"
+    case imageURLFour = "https://images.wallpaperscraft.ru/image/palma_listia_more_205264_2160x3840.jpg"
+    case imageURLFive = "https://images.wallpaperscraft.ru/image/zakat_solntse_voda_205212_2160x3840.jpg"
 }
 
 enum PhotoOnMain: String, CaseIterable {
     case photoOne = "iPhone-SE-11"
-    case photoTwo = "2-courselogo"
-    case photoThree = "3-courselogo-1"
-    case photoFour = "13-courselogo"
-    case photoFive = "16-courselogo"
+    case photoTwo = "doroga_povorot_derevia_205322_2160x3840"
+    case photoThree = "gory_holmy_derevia_205309_2160x3840"
+    case photoFour = "palma_listia_more_205264_2160x3840"
+    case photoFive = "zakat_solntse_voda_205212_2160x3840"
 }
 
 class MainViewController: UICollectionViewController {
@@ -118,7 +118,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 
     private func oneButtonPressed() {
-        guard let url = URL(string: URLExamples.exampleOne.rawValue) else { return }
+        guard let url = URL(string: URLExamples.imageURLTwo.rawValue) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {

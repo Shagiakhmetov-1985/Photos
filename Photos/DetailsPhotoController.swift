@@ -23,7 +23,7 @@ class DetailsPhotoController: UIViewController {
     }
     
     private func fetchImage() {
-        guard let url = URL(string: URLExamples.imageURL.rawValue) else { return }
+        guard let url = URL(string: URLExamples.imageURLOne.rawValue) else { return }
 
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let response = response else {
