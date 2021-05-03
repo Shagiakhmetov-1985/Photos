@@ -12,19 +12,22 @@ class DetailsPhotoController: UIViewController {
     @IBOutlet weak var detailsImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-//    var image: UIImage?
+    var linksURL: URLLinks!
+//    var photoURL: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.startAnimating()
         activityIndicator.hidesWhenStopped = true
-        fetchImage()
-//        detailsImageView.image = image
+//        oneImage()
+//        twoImage()
+//        threeImage()
+        print(linksURL ?? "")
     }
     
-    private func fetchImage() {
-        guard let url = URL(string: URLExamples.imageURLOne.rawValue) else { return }
-
+    private func oneImage() {
+        guard let url = URL(string: linksURL.rawValue) else { return }
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data, let response = response else {
                 print(error?.localizedDescription ?? "No error description")
@@ -39,5 +42,4 @@ class DetailsPhotoController: UIViewController {
             }
         }.resume()
     }
-
 }

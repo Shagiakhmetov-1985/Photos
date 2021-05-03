@@ -7,8 +7,8 @@
 
 import UIKit
 
-enum URLExamples: String {
-    case imageURLOne = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
+enum URLLinks: String, CaseIterable {
+    case imageURLOne = "https://images.wallpaperscraft.ru/image/planety_galaktika_zvezdy_146448_2160x3840.jpg"
     case imageURLTwo = "https://images.wallpaperscraft.ru/image/doroga_povorot_derevia_205322_2160x3840.jpg"
     case imageURLThree = "https://images.wallpaperscraft.ru/image/gory_holmy_derevia_205309_2160x3840.jpg"
     case imageURLFour = "https://images.wallpaperscraft.ru/image/palma_listia_more_205264_2160x3840.jpg"
@@ -16,7 +16,7 @@ enum URLExamples: String {
 }
 
 enum PhotoOnMain: String, CaseIterable {
-    case photoOne = "iPhone-SE-11"
+    case photoOne = "planety_galaktika_zvezdy_146448_2160x3840"
     case photoTwo = "doroga_povorot_derevia_205322_2160x3840"
     case photoThree = "gory_holmy_derevia_205309_2160x3840"
     case photoFour = "palma_listia_more_205264_2160x3840"
@@ -25,6 +25,7 @@ enum PhotoOnMain: String, CaseIterable {
 
 class MainViewController: UICollectionViewController {
     
+    let linkURL = URLLinks.allCases
     let photoOnMain = PhotoOnMain.allCases
     
     private let itemPerRow: CGFloat = 2
@@ -39,12 +40,30 @@ class MainViewController: UICollectionViewController {
 
         switch photoOnMain {
         case .photoOne: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
-        case .photoTwo: oneButtonPressed()
-        case .photoThree: oneButtonPressed()
+        case .photoTwo: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
+        case .photoThree: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
         case .photoFour: oneButtonPressed()
         case .photoFive: oneButtonPressed()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickPhotoSegue" {
+            let linkVC = segue.destination as! DetailsPhotoController
+            let cell = sender as! UICollectionViewCell
+            let indexPath = collectionView.indexPath(for: cell)
+            let data = linkURL[indexPath!.item]
+            linkVC.linksURL = data
+        }
+    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "pickPhotoSegue" {
+//            let cell: PhotoCell = sender as! PhotoCell
+//            let image = cell.imageView.image
+//            let photoVC: DetailsPhotoController = segue.destination as! DetailsPhotoController
+//            photoVC.photoURL = image
+//        }
+//    }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -118,7 +137,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
 
     private func oneButtonPressed() {
-        guard let url = URL(string: URLExamples.imageURLTwo.rawValue) else { return }
+        guard let url = URL(string: URLLinks.imageURLTwo.rawValue) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard let data = data else {
