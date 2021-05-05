@@ -11,8 +11,9 @@ enum URLLinks: String {
     case imageURLOne = "https://images.wallpaperscraft.ru/image/planety_galaktika_zvezdy_146448_2160x3840.jpg"
     case imageURLTwo = "https://images.wallpaperscraft.ru/image/doroga_povorot_derevia_205322_2160x3840.jpg"
     case imageURLThree = "https://images.wallpaperscraft.ru/image/gory_holmy_derevia_205309_2160x3840.jpg"
-    case imageURLFour = "https://images.wallpaperscraft.ru/image/palma_listia_more_205264_2160x3840.jpg"
-    case imageURLFive = "https://images.wallpaperscraft.ru/image/zakat_solntse_voda_205212_2160x3840.jpg"
+    case imageURLFour = "https://jsonplaceholder.typicode.com/posts/1"
+    case imageURLFive = "https://jsonplaceholder.typicode.com/posts"
+    case imageURLSix = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
 }
 
 enum PhotoOnMain: String, CaseIterable {
@@ -21,6 +22,7 @@ enum PhotoOnMain: String, CaseIterable {
     case photoThree = "gory_holmy_derevia_205309_2160x3840"
     case photoFour = "palma_listia_more_205264_2160x3840"
     case photoFive = "zakat_solntse_voda_205212_2160x3840"
+    case photoSix = "soty_svechenie_obem_166024_2160x3840"
 }
 
 class MainViewController: UICollectionViewController {
@@ -43,16 +45,23 @@ class MainViewController: UICollectionViewController {
         case .photoThree: performSegue(withIdentifier: "pickPhotoSegueThree", sender: nil)
         case .photoFour: fourButtonPressed()
         case .photoFive: fiveButtonPressed()
+        case .photoSix: performSegue(withIdentifier: "pickPhotoSegueList", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let photoVC = segue.destination as! DetailsPhotoController
-        switch segue.identifier {
-        case "pickPhotoSegueOne": photoVC.oneImage()
-        case "pickPhotoSegueTwo": photoVC.twoImage()
-        case "pickPhotoSegueThree": photoVC.threeImage()
-        default: break
+        if segue.identifier != "pickPhotoSegueList" {
+            let photoVC = segue.destination as! DetailsPhotoController
+            switch segue.identifier {
+            case "pickPhotoSegueOne": photoVC.oneImage()
+            case "pickPhotoSegueTwo": photoVC.twoImage()
+            case "pickPhotoSegueThree": photoVC.threeImage()
+            default: break
+            }
+            
+        } else {
+            let wallpaperVC = segue.destination as! ListOfPhotosViewController
+            wallpaperVC.fetchWallpapers()
         }
     }
     
@@ -61,7 +70,7 @@ class MainViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoOnMain.count
+        photoOnMain.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -152,7 +161,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             guard let data = data else { return }
             
             do {
-                let photo = try JSONDecoder().decode(Photos.self, from: data)
+                let photo = try JSONDecoder().decode([Photos].self, from: data)
                 self.successAlert()
                 print(photo)
             } catch let error {

@@ -6,11 +6,20 @@
 //
 
 struct Photos: Decodable {
-    let imageUrl: String?
+    let id: Int?
+    let title: String?
+    let body: String?
 }
 
-struct WebSiteDescription {
-    let photos: [Photos]?
-    let websiteDescription: String?
-    let websiteName: String?
+//struct WebSiteDescription {
+//    let photos: [Photos]?
+//    let websiteDescription: String?
+//    let websiteName: String?
+//}
+
+struct Wallpapers: Decodable {
+    let name: String?
+    let imageUrl: String?
+    let numberOfLessons: Int?
+    let numberOfTests: Int?
 }

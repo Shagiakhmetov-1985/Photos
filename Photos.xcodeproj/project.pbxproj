@@ -16,6 +16,8 @@
 		C3A4DD80263EDE3600BC7597 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DD7F263EDE3600BC7597 /* PhotoCell.swift */; };
 		C3A4DD82263EE56E00BC7597 /* DetailsPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DD81263EE56E00BC7597 /* DetailsPhotoController.swift */; };
 		C3A4DD84263F372F00BC7597 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A4DD83263F372F00BC7597 /* Photos.swift */; };
+		C3CEE1E42642EE7D00A79F5B /* ListOfPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CEE1E32642EE7D00A79F5B /* ListOfPhotosViewController.swift */; };
+		C3CEE1E62642F14D00A79F5B /* WallpapersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CEE1E52642F14D00A79F5B /* WallpapersCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		C3A4DD7F263EDE3600BC7597 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		C3A4DD81263EE56E00BC7597 /* DetailsPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPhotoController.swift; sourceTree = "<group>"; };
 		C3A4DD83263F372F00BC7597 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		C3CEE1E32642EE7D00A79F5B /* ListOfPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfPhotosViewController.swift; sourceTree = "<group>"; };
+		C3CEE1E52642F14D00A79F5B /* WallpapersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpapersCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +70,9 @@
 				C3A4DD69263ED1EA00BC7597 /* SceneDelegate.swift */,
 				C3A4DD7B263ED39C00BC7597 /* MainViewController.swift */,
 				C3A4DD81263EE56E00BC7597 /* DetailsPhotoController.swift */,
+				C3CEE1E32642EE7D00A79F5B /* ListOfPhotosViewController.swift */,
 				C3A4DD7F263EDE3600BC7597 /* PhotoCell.swift */,
+				C3CEE1E52642F14D00A79F5B /* WallpapersCell.swift */,
 				C3A4DD83263F372F00BC7597 /* Photos.swift */,
 				C3A4DD6D263ED1EA00BC7597 /* Main.storyboard */,
 				C3A4DD70263ED1EB00BC7597 /* Assets.xcassets */,
@@ -148,8 +154,10 @@
 			files = (
 				C3A4DD84263F372F00BC7597 /* Photos.swift in Sources */,
 				C3A4DD80263EDE3600BC7597 /* PhotoCell.swift in Sources */,
+				C3CEE1E62642F14D00A79F5B /* WallpapersCell.swift in Sources */,
 				C3A4DD7C263ED39C00BC7597 /* MainViewController.swift in Sources */,
 				C3A4DD68263ED1EA00BC7597 /* AppDelegate.swift in Sources */,
+				C3CEE1E42642EE7D00A79F5B /* ListOfPhotosViewController.swift in Sources */,
 				C3A4DD6A263ED1EA00BC7597 /* SceneDelegate.swift in Sources */,
 				C3A4DD82263EE56E00BC7597 /* DetailsPhotoController.swift in Sources */,
 			);
