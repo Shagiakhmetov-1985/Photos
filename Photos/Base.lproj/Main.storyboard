@@ -55,7 +55,9 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="tqo-KC-5sp"/>
                     <connections>
-                        <segue destination="FpM-ds-b1W" kind="show" identifier="pickPhotoSegue" id="Su4-3F-b4c"/>
+                        <segue destination="FpM-ds-b1W" kind="show" identifier="pickPhotoSegueOne" id="Su4-3F-b4c"/>
+                        <segue destination="FpM-ds-b1W" kind="show" identifier="pickPhotoSegueTwo" id="VQ4-lF-kl2"/>
+                        <segue destination="FpM-ds-b1W" kind="show" identifier="pickPhotoSegueThree" id="NeW-rb-iA3"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0PP-AY-0XR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -96,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u1I-Bs-DTx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802.8985507246377" y="71.651785714285708"/>
+            <point key="canvasLocation" x="2043" y="-131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ga7-1Y-gPh">
@@ -117,6 +119,9 @@
             <point key="canvasLocation" x="26.086956521739133" y="71.651785714285708"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NeW-rb-iA3"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

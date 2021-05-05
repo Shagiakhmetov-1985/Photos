@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum URLLinks: String, CaseIterable {
+enum URLLinks: String {
     case imageURLOne = "https://images.wallpaperscraft.ru/image/planety_galaktika_zvezdy_146448_2160x3840.jpg"
     case imageURLTwo = "https://images.wallpaperscraft.ru/image/doroga_povorot_derevia_205322_2160x3840.jpg"
     case imageURLThree = "https://images.wallpaperscraft.ru/image/gory_holmy_derevia_205309_2160x3840.jpg"
@@ -25,7 +25,6 @@ enum PhotoOnMain: String, CaseIterable {
 
 class MainViewController: UICollectionViewController {
     
-    let linkURL = URLLinks.allCases
     let photoOnMain = PhotoOnMain.allCases
     
     private let itemPerRow: CGFloat = 2
@@ -39,31 +38,23 @@ class MainViewController: UICollectionViewController {
         let photoOnMain = photoOnMain[indexPath.item]
 
         switch photoOnMain {
-        case .photoOne: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
-        case .photoTwo: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
-        case .photoThree: performSegue(withIdentifier: "pickPhotoSegue", sender: nil)
-        case .photoFour: oneButtonPressed()
-        case .photoFive: oneButtonPressed()
+        case .photoOne: performSegue(withIdentifier: "pickPhotoSegueOne", sender: nil)
+        case .photoTwo: performSegue(withIdentifier: "pickPhotoSegueTwo", sender: nil)
+        case .photoThree: performSegue(withIdentifier: "pickPhotoSegueThree", sender: nil)
+        case .photoFour: fourButtonPressed()
+        case .photoFive: fiveButtonPressed()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pickPhotoSegue" {
-            let linkVC = segue.destination as! DetailsPhotoController
-            let cell = sender as! UICollectionViewCell
-            let indexPath = collectionView.indexPath(for: cell)
-            let data = linkURL[indexPath!.item]
-            linkVC.linksURL = data
+        let photoVC = segue.destination as! DetailsPhotoController
+        switch segue.identifier {
+        case "pickPhotoSegueOne": photoVC.oneImage()
+        case "pickPhotoSegueTwo": photoVC.twoImage()
+        case "pickPhotoSegueThree": photoVC.threeImage()
+        default: break
         }
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "pickPhotoSegue" {
-//            let cell: PhotoCell = sender as! PhotoCell
-//            let image = cell.imageView.image
-//            let photoVC: DetailsPhotoController = segue.destination as! DetailsPhotoController
-//            photoVC.photoURL = image
-//        }
-//    }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -80,7 +71,7 @@ class MainViewController: UICollectionViewController {
         let image = UIImage(named: imageName.rawValue)
         
         cell.imageView.image = image
-    
+        
         return cell
     }
     // MARK: - Private methods
@@ -136,14 +127,11 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         return sectionInserts.left
     }
 
-    private func oneButtonPressed() {
-        guard let url = URL(string: URLLinks.imageURLTwo.rawValue) else { return }
+    private func fourButtonPressed() {
+        guard let url = URL(string: URLLinks.imageURLFour.rawValue) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data else { return }
             
             do {
                 let photo = try JSONDecoder().decode(Photos.self, from: data)
@@ -151,7 +139,25 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
                 print(photo)
             } catch let error {
                 self.failedAlert()
-                print(error.localizedDescription)
+                print(error)
+            }
+            
+        }.resume()
+    }
+    
+    private func fiveButtonPressed() {
+        guard let url = URL(string: URLLinks.imageURLFive.rawValue) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data else { return }
+            
+            do {
+                let photo = try JSONDecoder().decode(Photos.self, from: data)
+                self.successAlert()
+                print(photo)
+            } catch let error {
+                self.failedAlert()
+                print(error)
             }
             
         }.resume()
