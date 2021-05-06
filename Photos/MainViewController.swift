@@ -40,11 +40,14 @@ class MainViewController: UICollectionViewController {
         let photoOnMain = photoOnMain[indexPath.item]
 
         switch photoOnMain {
+        //отображение первые три ячейки фото по url адресу
         case .photoOne: performSegue(withIdentifier: "pickPhotoSegueOne", sender: nil)
         case .photoTwo: performSegue(withIdentifier: "pickPhotoSegueTwo", sender: nil)
         case .photoThree: performSegue(withIdentifier: "pickPhotoSegueThree", sender: nil)
+        //парсинг JSON
         case .photoFour: fourButtonPressed()
         case .photoFive: fiveButtonPressed()
+        //парсинг JSON и отображение данных на экране
         case .photoSix: performSegue(withIdentifier: "pickPhotoSegueList", sender: nil)
         }
     }
