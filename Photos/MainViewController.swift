@@ -13,7 +13,6 @@ enum URLLinks: String {
     case imageURLThree = "https://images.wallpaperscraft.ru/image/gory_holmy_derevia_205309_2160x3840.jpg"
     case imageURLFour = "https://jsonplaceholder.typicode.com/posts/1"
     case imageURLFive = "https://jsonplaceholder.typicode.com/posts"
-//    case imageURLSix = "https://swiftbook.ru//wp-content/uploads/api/api_courses"
     case imageURLSix = "https://picsum.photos/v2/list"
 }
 
