@@ -12,11 +12,11 @@ class WallpapersCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var wallpaperImage: UIImageView!
     
-    func configure(with wallpapers: Wallpapers) {
-        titleLabel.text = wallpapers.name
+    func configure(with wallpapers: Wallpaper) {
+        titleLabel.text = wallpapers.author
         
         DispatchQueue.global().async {
-            guard let stringURL = wallpapers.imageUrl else { return }
+            guard let stringURL = wallpapers.downloadUrl else { return }
             guard let imageURL = URL(string: stringURL) else { return }
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             DispatchQueue.main.async {

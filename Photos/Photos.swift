@@ -25,7 +25,10 @@ struct Wallpapers: Decodable {
 }
 
 struct Wallpaper: Decodable {
-    let image: String?
-    let id: Int?
-    let title: String?
+    let id: String?
+    let author: String?
+    let width: Int?
+    let height: Int?
+    let url: String?
+    let downloadUrl: String?
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class ListOfPhotosViewController: UITableViewController {
 
-    var wallpapers: [Wallpapers] = []
+    var wallpapers: [Wallpaper] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ extension ListOfPhotosViewController {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                self.wallpapers = try decoder.decode([Wallpapers].self, from: data)
+                self.wallpapers = try decoder.decode([Wallpaper].self, from: data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
