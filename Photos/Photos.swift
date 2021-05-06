@@ -11,19 +11,6 @@ struct Photos: Decodable {
     let body: String?
 }
 
-//struct WebSiteDescription {
-//    let photos: [Photos]?
-//    let websiteDescription: String?
-//    let websiteName: String?
-//}
-
-struct Wallpapers: Decodable {
-    let name: String?
-    let imageUrl: String?
-    let numberOfLessons: Int?
-    let numberOfTests: Int?
-}
-
 struct Wallpaper: Decodable {
     let id: String?
     let author: String?
