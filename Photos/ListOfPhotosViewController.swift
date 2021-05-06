@@ -25,9 +25,12 @@ class ListOfPhotosViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! WallpapersCell
         let wallpaper = wallpapers[indexPath.row]
-//        print(wallpapers[indexPath.row])
         cell.configure(with: wallpaper)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

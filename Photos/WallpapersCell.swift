@@ -14,7 +14,7 @@ class WallpapersCell: UITableViewCell {
     
     func configure(with wallpapers: Wallpapers) {
         titleLabel.text = wallpapers.name
-//        print(wallpapers.name ?? "no")
+        
         DispatchQueue.global().async {
             guard let stringURL = wallpapers.imageUrl else { return }
             guard let imageURL = URL(string: stringURL) else { return }

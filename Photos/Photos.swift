@@ -23,3 +23,9 @@ struct Wallpapers: Decodable {
     let numberOfLessons: Int?
     let numberOfTests: Int?
 }
+
+struct Wallpaper: Decodable {
+    let image: String?
+    let id: Int?
+    let title: String?
+}
