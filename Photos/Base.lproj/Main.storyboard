@@ -90,18 +90,24 @@
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="645-RL-ou3">
+                                            <rect key="frame" x="188.5" y="231.5" width="37" height="37"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Wzf-g3-pWs" firstAttribute="leading" secondItem="zJQ-S9-pMk" secondAttribute="leadingMargin" constant="20" id="BRh-sq-NiR"/>
                                         <constraint firstAttribute="trailing" secondItem="q3N-39-Ib4" secondAttribute="trailing" id="Bso-ee-5pd"/>
+                                        <constraint firstItem="645-RL-ou3" firstAttribute="centerX" secondItem="zJQ-S9-pMk" secondAttribute="centerX" id="RPr-yT-MxD"/>
                                         <constraint firstItem="Wzf-g3-pWs" firstAttribute="top" secondItem="zJQ-S9-pMk" secondAttribute="topMargin" constant="32" id="Wpn-6u-nCd"/>
                                         <constraint firstAttribute="bottom" secondItem="q3N-39-Ib4" secondAttribute="bottom" id="Xha-dn-hkr"/>
                                         <constraint firstItem="q3N-39-Ib4" firstAttribute="leading" secondItem="zJQ-S9-pMk" secondAttribute="leading" id="aVd-Ho-Id3"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Wzf-g3-pWs" secondAttribute="trailing" constant="20" id="ejy-bX-nfr"/>
                                         <constraint firstItem="q3N-39-Ib4" firstAttribute="top" secondItem="zJQ-S9-pMk" secondAttribute="top" id="hVw-gW-Mfq"/>
+                                        <constraint firstItem="645-RL-ou3" firstAttribute="centerY" secondItem="zJQ-S9-pMk" secondAttribute="centerY" id="lcY-eE-ZwB"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="indicator" destination="645-RL-ou3" id="tjE-Cr-WE9"/>
                                     <outlet property="titleLabel" destination="Wzf-g3-pWs" id="0B3-sP-tch"/>
                                     <outlet property="wallpaperImage" destination="q3N-39-Ib4" id="Qnl-o1-B4e"/>
                                 </connections>

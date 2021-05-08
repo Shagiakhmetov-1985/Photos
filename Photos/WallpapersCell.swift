@@ -11,9 +11,12 @@ class WallpapersCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var wallpaperImage: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     func configure(with wallpapers: Wallpaper) {
         titleLabel.text = wallpapers.author
+        indicator.startAnimating()
+        indicator.hidesWhenStopped = true
         
         DispatchQueue.global().async {
             guard let stringURL = wallpapers.downloadUrl else { return }
@@ -21,6 +24,7 @@ class WallpapersCell: UITableViewCell {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             DispatchQueue.main.async {
                 self.wallpaperImage.image = UIImage(data: imageData)
+                self.indicator.stopAnimating()
             }
         }
     }

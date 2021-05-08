@@ -8,7 +8,7 @@
 import UIKit
 
 class ListOfPhotosViewController: UITableViewController {
-
+    
     var wallpapers: [Wallpaper] = []
     
     override func viewDidLoad() {
