@@ -23,6 +23,7 @@ enum PhotoOnMain: String, CaseIterable {
     case photoFour = "palma_listia_more_205264_2160x3840"
     case photoFive = "zakat_solntse_voda_205212_2160x3840"
     case photoSix = "soty_svechenie_obem_166024_2160x3840"
+    case photoSeven = "lavanda_pole_zvezdnoe_nebo_123482_2160x3840"
 }
 
 class MainViewController: UICollectionViewController {
@@ -44,16 +45,19 @@ class MainViewController: UICollectionViewController {
         case .photoOne: performSegue(withIdentifier: "pickPhotoSegueOne", sender: nil)
         case .photoTwo: performSegue(withIdentifier: "pickPhotoSegueTwo", sender: nil)
         case .photoThree: performSegue(withIdentifier: "pickPhotoSegueThree", sender: nil)
-        //парсинг JSON
+        //парсинг JSON, 4 и 5 ячейки
         case .photoFour: fourButtonPressed()
         case .photoFive: fiveButtonPressed()
-        //парсинг JSON и отображение данных на экране
+        //парсинг JSON и отображение данных на экране, 6 ячейка
         case .photoSix: performSegue(withIdentifier: "pickPhotoSegueList", sender: nil)
+        //парсинг JSON с помощью фреймворка Alamofire, 7 ячейка
+        case .photoSeven: performSegue(withIdentifier: "pickPhotoSegueListAlamofireGet", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "pickPhotoSegueList" {
+        if segue.identifier != "pickPhotoSegueList",
+           segue.identifier != "pickPhotoSegueListAlamofireGet" {
             let photoVC = segue.destination as! DetailsPhotoController
             switch segue.identifier {
             case "pickPhotoSegueOne": photoVC.oneImage()
@@ -61,10 +65,13 @@ class MainViewController: UICollectionViewController {
             case "pickPhotoSegueThree": photoVC.threeImage()
             default: break
             }
-            
         } else {
             let wallpaperVC = segue.destination as! ListOfPhotosViewController
-            wallpaperVC.fetchWallpapers()
+            switch segue.identifier {
+            case "pickPhotoSegueList": wallpaperVC.fetchWallpapers()
+            case "pickPhotoSegueListAlamofireGet": wallpaperVC.alamofireGet()
+            default: break
+            }
         }
     }
     

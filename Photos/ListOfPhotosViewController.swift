@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ListOfPhotosViewController: UITableViewController {
     
@@ -53,5 +54,23 @@ extension ListOfPhotosViewController {
             }
             
         }.resume()
+    }
+    
+    func alamofireGet() {
+        AF.request(URLLinks.imageURLSix.rawValue)
+            .validate()
+            .responseJSON { dataResponse in
+                switch dataResponse.result {
+                case .success(let value):
+                    self.wallpapers = Wallpaper.getWallpapers(from: value)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
     }
 }
