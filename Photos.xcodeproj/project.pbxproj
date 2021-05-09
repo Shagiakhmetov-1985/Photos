@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -58,7 +58,6 @@
 				F59CDB550DC8E2F638A6A61A /* Pods-Photos.debug.xcconfig */,
 				C3E36981960C5C4846495BFE /* Pods-Photos.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -68,6 +67,53 @@
 				587869AC54E20C2FD526737B /* Pods_Photos.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C31DFD462647D02400D286C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3A4DD83263F372F00BC7597 /* Photos.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C31DFD472647D03400D286C2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C3A4DD6D263ED1EA00BC7597 /* Main.storyboard */,
+				C3A4DD72263ED1EB00BC7597 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C31DFD482647D06600D286C2 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				C3A4DD70263ED1EB00BC7597 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		C31DFD492647D07400D286C2 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				C3A4DD67263ED1EA00BC7597 /* AppDelegate.swift */,
+				C3A4DD69263ED1EA00BC7597 /* SceneDelegate.swift */,
+				C3A4DD75263ED1EB00BC7597 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		C31DFD4A2647D08E00D286C2 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3A4DD7B263ED39C00BC7597 /* MainViewController.swift */,
+				C3A4DD81263EE56E00BC7597 /* DetailsPhotoController.swift */,
+				C3CEE1E32642EE7D00A79F5B /* ListOfPhotosViewController.swift */,
+				C3A4DD7F263EDE3600BC7597 /* PhotoCell.swift */,
+				C3CEE1E52642F14D00A79F5B /* WallpapersCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		C3A4DD5B263ED1EA00BC7597 = {
@@ -91,18 +137,11 @@
 		C3A4DD66263ED1EA00BC7597 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				C3A4DD67263ED1EA00BC7597 /* AppDelegate.swift */,
-				C3A4DD69263ED1EA00BC7597 /* SceneDelegate.swift */,
-				C3A4DD7B263ED39C00BC7597 /* MainViewController.swift */,
-				C3A4DD81263EE56E00BC7597 /* DetailsPhotoController.swift */,
-				C3CEE1E32642EE7D00A79F5B /* ListOfPhotosViewController.swift */,
-				C3A4DD7F263EDE3600BC7597 /* PhotoCell.swift */,
-				C3CEE1E52642F14D00A79F5B /* WallpapersCell.swift */,
-				C3A4DD83263F372F00BC7597 /* Photos.swift */,
-				C3A4DD6D263ED1EA00BC7597 /* Main.storyboard */,
-				C3A4DD70263ED1EB00BC7597 /* Assets.xcassets */,
-				C3A4DD72263ED1EB00BC7597 /* LaunchScreen.storyboard */,
-				C3A4DD75263ED1EB00BC7597 /* Info.plist */,
+				C31DFD4A2647D08E00D286C2 /* View Controllers */,
+				C31DFD462647D02400D286C2 /* Model */,
+				C31DFD472647D03400D286C2 /* Storyboards */,
+				C31DFD492647D07400D286C2 /* Supporting */,
+				C31DFD482647D06600D286C2 /* Resourses */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -378,7 +417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4AD5RA4FS;
-				INFOPLIST_FILE = Photos/Info.plist;
+				INFOPLIST_FILE = Photos/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -398,7 +437,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S4AD5RA4FS;
-				INFOPLIST_FILE = Photos/Info.plist;
+				INFOPLIST_FILE = Photos/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

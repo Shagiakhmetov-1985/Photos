@@ -60,6 +60,7 @@
                         <segue destination="FpM-ds-b1W" kind="show" identifier="pickPhotoSegueThree" id="NeW-rb-iA3"/>
                         <segue destination="e9y-jG-YyL" kind="show" identifier="pickPhotoSegueList" id="KAs-UV-Zve"/>
                         <segue destination="e9y-jG-YyL" kind="show" identifier="pickPhotoSegueListAlamofireGet" id="sxe-31-ksX"/>
+                        <segue destination="e9y-jG-YyL" kind="show" identifier="pickPhotoSegueListAlamofirePost" id="4gT-u8-uyA"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0PP-AY-0XR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -182,7 +183,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Su4-3F-b4c"/>
-        <segue reference="KAs-UV-Zve"/>
+        <segue reference="4gT-u8-uyA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

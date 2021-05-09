@@ -14,6 +14,8 @@ enum URLLinks: String {
     case imageURLFour = "https://jsonplaceholder.typicode.com/posts/1"
     case imageURLFive = "https://jsonplaceholder.typicode.com/posts"
     case imageURLSix = "https://picsum.photos/v2/list"
+    case imageURLSeven = "https://picsum.photos/v2/list?page=2&limit=100"
+    case imageURLEight = "https://picsum.photos/id/164/1200/800"
 }
 
 enum PhotoOnMain: String, CaseIterable {
@@ -24,6 +26,7 @@ enum PhotoOnMain: String, CaseIterable {
     case photoFive = "zakat_solntse_voda_205212_2160x3840"
     case photoSix = "soty_svechenie_obem_166024_2160x3840"
     case photoSeven = "lavanda_pole_zvezdnoe_nebo_123482_2160x3840"
+    case photoEight = "derevia_reka_otrazhenie_134973_2160x3840"
 }
 
 class MainViewController: UICollectionViewController {
@@ -52,12 +55,15 @@ class MainViewController: UICollectionViewController {
         case .photoSix: performSegue(withIdentifier: "pickPhotoSegueList", sender: nil)
         //парсинг JSON с помощью фреймворка Alamofire, 7 ячейка
         case .photoSeven: performSegue(withIdentifier: "pickPhotoSegueListAlamofireGet", sender: nil)
+        //парсинг JSON с помощью фреймворка Alamofire, 8 ячейка
+        case .photoEight: performSegue(withIdentifier: "pickPhotoSegueListAlamofirePost", sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier != "pickPhotoSegueList",
-           segue.identifier != "pickPhotoSegueListAlamofireGet" {
+           segue.identifier != "pickPhotoSegueListAlamofireGet",
+           segue.identifier != "pickPhotoSegueListAlamofirePost"{
             let photoVC = segue.destination as! DetailsPhotoController
             switch segue.identifier {
             case "pickPhotoSegueOne": photoVC.oneImage()
@@ -70,6 +76,7 @@ class MainViewController: UICollectionViewController {
             switch segue.identifier {
             case "pickPhotoSegueList": wallpaperVC.fetchWallpapers()
             case "pickPhotoSegueListAlamofireGet": wallpaperVC.alamofireGet()
+            case "pickPhotoSegueListAlamofirePost": wallpaperVC.alamofirePost()
             default: break
             }
         }

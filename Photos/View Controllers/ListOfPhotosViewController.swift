@@ -73,4 +73,37 @@ extension ListOfPhotosViewController {
                 }
             }
     }
+    
+    func alamofirePost() {
+        let wallpapers = WallpaperAlamofirePost(
+            id: "164",
+            author: "Linh Nguyen",
+            width: 1200,
+            height: 800,
+            url: "https://unsplash.com/photos/agkblvPff5U",
+            downloadUrl: URLLinks.imageURLEight.rawValue
+        )
+        
+        AF.request(URLLinks.imageURLSeven.rawValue, method: .post, parameters: wallpapers)
+            .validate()
+            .responseDecodable(of: WallpaperAlamofirePost.self) { dataResponse in
+                switch dataResponse.result {
+                case .success(let wallpapersAlamofirePost):
+                    let wallpaper = Wallpaper(
+                        id: wallpapersAlamofirePost.id,
+                        author: wallpapersAlamofirePost.author,
+                        width: wallpapersAlamofirePost.height,
+                        height: wallpapersAlamofirePost.width,
+                        url: wallpapersAlamofirePost.url,
+                        downloadUrl: wallpapersAlamofirePost.downloadUrl
+                    )
+                    self.wallpapers.append(wallpaper)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+    }
 }
